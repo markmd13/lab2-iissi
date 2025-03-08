@@ -67,7 +67,7 @@ const update = async function (req, res) {
 
 const destroy = async function (req, res) {
   try {
-    const result = await Restaurant.destroy(req.params.restaurantId)
+    const result = await Restaurant.destroy(req.body, { where: { id: req.params.restaurantId } })
     let message = ''
     if (result === 1) {
       message = 'Sucessfuly deleted restaurant id.' + req.params.restaurantId
